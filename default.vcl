@@ -1,6 +1,6 @@
 vcl 4.0;
 
-backend ruby {
+backend jahia {
        .host = "jahia";
        .port = "8080";
 }
