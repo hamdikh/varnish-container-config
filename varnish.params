@@ -5,7 +5,7 @@
 RELOAD_VCL=1
 
 # Main configuration file. You probably want to change it.
-VARNISH_VCL_CONF=/etc/opt/rh/rh-varnish4/varnish/default.vcl
+VARNISH_VCL_CONF=$VARNISH_VCL_CONF_FILE_PATH
 
 # Default address and port to bind to. Blank address means all IPv4
 # and IPv6 interfaces, otherwise specify a host name, an IPv4 dotted
@@ -18,11 +18,11 @@ VARNISH_ADMIN_LISTEN_ADDRESS=127.0.0.1
 VARNISH_ADMIN_LISTEN_PORT=6082
 
 # Shared secret file for admin interface
-VARNISH_SECRET_FILE=/etc/opt/rh/rh-varnish4/varnish/secret
+VARNISH_SECRET_FILE=$VARNISH_SECRET_FILE_PATH
 
 # Backend storage specification, see Storage Types in the varnishd(5)
 # man page for details.
-VARNISH_STORAGE="file,/var/opt/rh/rh-varnish4/lib/rh-varnish4-varnish/varnish_storage.bin,1G"
+VARNISH_STORAGE=$VARNISH_STORAGE_PARAMS
 
 # Default TTL used when the backend does not specify one
 VARNISH_TTL=120
@@ -32,4 +32,4 @@ VARNISH_USER=varnish
 VARNISH_GROUP=varnish
 
 # Other options, see the man page varnishd(1)
-#DAEMON_OPTS="-p thread_pool_min=5 -p thread_pool_max=500 -p thread_pool_timeout=300"
+DAEMON_OPTS="$(echo $POD_DAEMON_OPTS)"
